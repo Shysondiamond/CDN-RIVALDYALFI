@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
         // Hentikan eksekusi script lainnya
         throw new Error("Domain tidak diizinkan");
     }
-});
+
 
         
 
@@ -1160,6 +1160,8 @@ addRoomBtn.onclick = () => {
         chk.onchange = () => { pin.style.display = chk.checked ? 'block' : 'none'; if (chk.checked) pin.focus(); };
     }, 80);
 };
+
+  });
         
         /* ==========================================================
            END JAVASCRIPT LENGKAP
