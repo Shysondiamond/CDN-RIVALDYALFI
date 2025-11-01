@@ -1,20 +1,3 @@
-// ==== Batasi Domain Akses ====
-(function() {
-  const allowedDomains = [
-    "exempel.com" // opsional untuk pengujian lokal
-  ];
-
-  const currentDomain = window.location.hostname;
-
-  if (!allowedDomains.includes(currentDomain)) {
-    console.warn("⚠️ Akses skrip diblokir: domain tidak diizinkan.");
-    return; // hentikan eksekusi seluruh skrip
-  }
-
-        
-
-
-
 /* Sidebar logic */
 const sidebar=document.getElementById('sidebar'),
       toggleBtn=document.getElementById('sidebar-toggle'),
@@ -1144,7 +1127,7 @@ addRoomBtn.onclick = () => {
 };
 
 
-        })();
+
         
         /* ==========================================================
            END JAVASCRIPT LENGKAP
