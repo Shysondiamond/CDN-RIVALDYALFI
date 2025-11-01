@@ -1,9 +1,7 @@
 // ==== Batasi Domain Akses ====
 (function() {
   const allowedDomains = [
-    "jeda-chat.web.app",
-    "chatku.id",
-    "localhost" // opsional untuk pengujian lokal
+    "exempel.com" // opsional untuk pengujian lokal
   ];
 
   const currentDomain = window.location.hostname;
