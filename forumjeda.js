@@ -2,19 +2,33 @@
   Lisensi Templae
   =====================*/
 
-(function() {
-    const allowedDomains = ["example.com", "www.example.com"];
-    const currentDomain = location.hostname;
+window.addEventListener('DOMContentLoaded', () => {
+    // Daftar domain yang diperbolehkan (tanpa https:// atau www)
+    const allowedDomains = [
+        "rivaldyalfi.com", // ganti dengan domain kamu
+        "www.rivaldyalfi.com" // jika pakai www
+    ];
 
+    // Ambil hostname saat ini
+    const currentDomain = location.hostname.toLowerCase();
+
+    // Cek apakah domain saat ini ada di daftar allowedDomains
     if (!allowedDomains.includes(currentDomain)) {
-        document.body.innerHTML = "<h2>Template tidak bisa digunakan di domain ini.</h2>";
-        return; // hentikan eksekusi selanjutnya
+        // Hapus seluruh konten halaman
+        document.documentElement.innerHTML = `
+            <body style="display:flex;justify-content:center;align-items:center;height:100vh;
+                         font-family:sans-serif;background:#f2f2f2;color:#333;text-align:center;">
+                <div>
+                    <h1>Template Tidak Bisa Digunakan di Domain Ini</h1>
+                    <p>Silakan gunakan domain resmi untuk mengakses template.</p>
+                </div>
+            </body>
+        `;
+        // Hentikan eksekusi script lainnya
+        throw new Error("Domain tidak diizinkan");
     }
+});
 
-    // Masukkan kode template di sini
-    function initTemplate() {
-        console.log("Template dijalankan...");
-/*=====================*/
         
 
 
@@ -1150,7 +1164,3 @@ addRoomBtn.onclick = () => {
         /* ==========================================================
            END JAVASCRIPT LENGKAP
            ========================================================== */
-}
-
-    initTemplate();
-})();
