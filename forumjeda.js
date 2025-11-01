@@ -1,32 +1,3 @@
-/*=====================
-  Lisensi Templae
-  =====================*/
-
-window.addEventListener('DOMContentLoaded', () => {
-    // Daftar domain yang diperbolehkan (tanpa https:// atau www)
-    const allowedDomains = [
-        "rivaldyalfi.com", // ganti dengan domain kamu
-        "www.rivaldyalfi.com" // jika pakai www
-    ];
-
-    // Ambil hostname saat ini
-    const currentDomain = location.hostname.toLowerCase();
-
-    // Cek apakah domain saat ini ada di daftar allowedDomains
-    if (!allowedDomains.includes(currentDomain)) {
-        // Hapus seluruh konten halaman
-        document.documentElement.innerHTML = `
-            <body style="display:flex;justify-content:center;align-items:center;height:100vh;
-                         font-family:sans-serif;background:#f2f2f2;color:#333;text-align:center;">
-                <div>
-                    <h1>Template Tidak Bisa Digunakan di Domain Ini</h1>
-                    <p>Silakan gunakan domain resmi untuk mengakses template.</p>
-                </div>
-            </body>
-        `;
-        // Hentikan eksekusi script lainnya
-        throw new Error("Domain tidak diizinkan");
-    }
 
 
         
@@ -1160,8 +1131,6 @@ addRoomBtn.onclick = () => {
         chk.onchange = () => { pin.style.display = chk.checked ? 'block' : 'none'; if (chk.checked) pin.focus(); };
     }, 80);
 };
-
-  });
         
         /* ==========================================================
            END JAVASCRIPT LENGKAP
