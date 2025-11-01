@@ -1,4 +1,17 @@
+// ==== Batasi Domain Akses ====
+(function() {
+  const allowedDomains = [
+    "jeda-chat.web.app",
+    "chatku.id",
+    "localhost" // opsional untuk pengujian lokal
+  ];
 
+  const currentDomain = window.location.hostname;
+
+  if (!allowedDomains.includes(currentDomain)) {
+    console.warn("⚠️ Akses skrip diblokir: domain tidak diizinkan.");
+    return; // hentikan eksekusi seluruh skrip
+  }
 
         
 
@@ -1131,6 +1144,9 @@ addRoomBtn.onclick = () => {
         chk.onchange = () => { pin.style.display = chk.checked ? 'block' : 'none'; if (chk.checked) pin.focus(); };
     }, 80);
 };
+
+
+        })();
         
         /* ==========================================================
            END JAVASCRIPT LENGKAP
