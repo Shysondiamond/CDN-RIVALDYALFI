@@ -2,26 +2,36 @@
   Lisensi Templae
   =====================*/
 
-(function() {
-    // Daftar domain yang diizinkan
-    const allowedDomains = [
-        'rivaldyalfi.com',
-        'forumjeda.pages.dev',
-        'localhost' // opsional untuk testing lokal
-    ];
+// Kode lisensi yang valid
+const VALID_LICENSES = [
+  { key: "ABC123XYZ", domains: ["example.com", "www.example.com"] },
+  { key: "DEF456XYZ", domains: ["bloguser.com"] }
+];
 
-    // Ambil domain saat ini
-    const currentDomain = window.location.hostname;
+// Fungsi cek lisensi
+function checkLicense(userKey) {
+  const currentDomain = location.hostname;
+  const license = VALID_LICENSES.find(l => l.key === userKey);
+  if (!license) return false;
+  return license.domains.includes(currentDomain);
+}
 
-    // Cek apakah domain saat ini ada di daftar yang diizinkan
-    if (!allowedDomains.includes(currentDomain)) {
-        console.error(`Lisensi tidak valid untuk domain: ${currentDomain}`);
-        document.body.innerHTML = `<h2 style="text-align:center;margin-top:50px;color:red;">
-            Lisensi script ini tidak valid untuk domain: ${currentDomain}
-        </h2>`;
-        // Hentikan eksekusi script
-        return;
-    }
+// Minta user memasukkan lisensi
+const userKey = prompt("Masukkan kode lisensi:");
+if (checkLicense(userKey)) {
+  console.log("Lisensi valid! Template jalan...");
+  initTemplate(); // panggil fungsi utama template
+} else {
+  console.warn("Lisensi tidak valid! Template tidak jalan.");
+  document.body.innerHTML = "<h2>Lisensi tidak valid! Hubungi penjual.</h2>";
+}
+
+// Fungsi utama template
+function initTemplate() {
+  // kode template di sini
+  console.log("Template dijalankan...");
+}
+
 /*=====================*/
         
 
