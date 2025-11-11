@@ -21,7 +21,7 @@
         overlay.style.left = 0;
         overlay.style.width = '100%';
         overlay.style.height = '100%';
-        overlay.style.backgroundColor = 'rgba(0,0,0,0.85)';
+        overlay.style.backgroundColor = 'red';
         overlay.style.color = '#fff';
         overlay.style.display = 'flex';
         overlay.style.flexDirection = 'column';
@@ -31,6 +31,11 @@
         overlay.style.textAlign = 'center';
         overlay.style.fontFamily = 'sans-serif';
         overlay.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polygon points="12 2 22 20 2 20 12 2" fill="red" stroke="white"/>
+  <line x1="12" y1="8" x2="12" y2="14" stroke="white" stroke-width="2"/>
+  <circle cx="12" cy="17" r="0.20" stroke="white" fill="white"/> <!-- titik lebih kecil -->
+</svg>
             <h1 style="font-size:2em;margin-bottom:1em;">Lisensi Tidak Valid</h1>
             <p>${message}</p>
         `;
