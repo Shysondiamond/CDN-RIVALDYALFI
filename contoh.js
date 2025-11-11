@@ -1,25 +1,17 @@
 (function(){
-    // Daftar lisensi yang valid untuk setiap domain
     const licenseMap = {
-        "jeda30": "jedabusiness.blogspot.com",
-        "XYZ987ABC": "example.com"
+        "jeda30": "jedabusiness.blogspot.com" // domain utama tanpa https://
     };
 
-    const currentDomain = window.location.hostname;
+    const currentDomain = window.location.hostname; // ambil domain saja
     const licenseKey = window.JedaLicense || null;
 
     if (!licenseKey || licenseMap[licenseKey] !== currentDomain) {
         console.error("Lisensi tidak valid untuk domain ini");
-        return; // hentikan eksekusi script
+        return;
     }
 
     console.log("Lisensi valid ✅, script berjalan di domain:", currentDomain);
 
-    // ===== Kode utama jeda.js di bawah ini =====
-    function initJeda() {
-        console.log("Jeda.js aktif di domain:", currentDomain);
-        // Tambahkan fitur / fungsi utama di sini
-    }
-
-    initJeda();
+    // Kode utama jeda.js di sini
 })();
