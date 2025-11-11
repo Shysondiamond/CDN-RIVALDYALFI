@@ -9,8 +9,10 @@
     // ===== AMBIL DOMAIN SEKARANG =====
     const currentDomain = window.location.hostname;
 
-    // ===== AMBIL LISENSI DARI Settings.license =====
-    const licenseKey = (window.Settings && window.Settings.license) || null;
+    // ===== AMBIL LISENSI DARI DATA ATTRIBUTE =====
+    const licenseKey = document.currentScript
+                         ? document.currentScript.getAttribute('data-license')
+                         : null;
 
     // ===== VALIDASI LISENSI =====
     if (!licenseKey) {
@@ -31,7 +33,8 @@
         document.documentElement.setAttribute('data-jeda-active', 'true');
         console.log("Jeda.js aktif di domain:", currentDomain);
 
-        // Tambahkan fungsi / fitur utama di sini
+        // Tambahkan semua fitur utama di sini
+        // Misal: notifikasi, manipulasi DOM, dll
     }
 
     initJeda();
