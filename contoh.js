@@ -3,13 +3,14 @@
     // token lisensi : domain utama (tanpa https://, tanpa path)
     const licenseMap = {
         "jeda30": "jedabusiness.blogspot.com",
-        // contoh lisensi lain:
-        // "XYZ987ABC": "example.com"
+        "ABC123XYZ": "example.com"
     };
 
     // ===== AMBIL DOMAIN SEKARANG =====
-    const currentDomain = window.location.hostname; // ambil host/domain saja
-    const licenseKey = window.JedaLicense || null;
+    const currentDomain = window.location.hostname;
+
+    // ===== AMBIL LISENSI DARI Settings.license =====
+    const licenseKey = (window.Settings && window.Settings.license) || null;
 
     // ===== VALIDASI LISENSI =====
     if (!licenseKey) {
@@ -30,8 +31,7 @@
         document.documentElement.setAttribute('data-jeda-active', 'true');
         console.log("Jeda.js aktif di domain:", currentDomain);
 
-        // Tambahkan fungsi / fitur utama kamu di sini
-        // Misal menambahkan notifikasi, manipulasi DOM, dll
+        // Tambahkan fungsi / fitur utama di sini
     }
 
     initJeda();
