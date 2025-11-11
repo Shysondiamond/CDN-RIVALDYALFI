@@ -1,17 +1,39 @@
 (function(){
+    // ===== DAFTAR LISENSI =====
+    // token lisensi : domain utama (tanpa https://, tanpa path)
     const licenseMap = {
-        "jeda30": "jedabusiness.blogspot.com" // domain utama tanpa https://
+        "jeda30": "jedabusiness.blogspot.com",
+        // contoh lisensi lain:
+        // "XYZ987ABC": "example.com"
     };
 
-    const currentDomain = window.location.hostname; // ambil domain saja
+    // ===== AMBIL DOMAIN SEKARANG =====
+    const currentDomain = window.location.hostname; // ambil host/domain saja
     const licenseKey = window.JedaLicense || null;
 
-    if (!licenseKey || licenseMap[licenseKey] !== currentDomain) {
-        console.error("Lisensi tidak valid untuk domain ini");
-        return;
+    // ===== VALIDASI LISENSI =====
+    if (!licenseKey) {
+        console.error("Jeda.js: Lisensi tidak ditemukan ❌");
+        return; // hentikan eksekusi
     }
 
-    console.log("Lisensi valid ✅, script berjalan di domain:", currentDomain);
+    if (licenseMap[licenseKey] !== currentDomain) {
+        console.error("Jeda.js: Lisensi tidak valid untuk domain ini ❌");
+        return; // hentikan eksekusi
+    }
 
-    // Kode utama jeda.js di sini
+    console.log("Jeda.js: Lisensi valid ✅, script berjalan di domain:", currentDomain);
+
+    // ===== KODE UTAMA JEDA.JS =====
+    function initJeda() {
+        // Contoh fitur utama
+        document.documentElement.setAttribute('data-jeda-active', 'true');
+        console.log("Jeda.js aktif di domain:", currentDomain);
+
+        // Tambahkan fungsi / fitur utama kamu di sini
+        // Misal menambahkan notifikasi, manipulasi DOM, dll
+    }
+
+    initJeda();
+
 })();
