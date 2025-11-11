@@ -1,9 +1,8 @@
 (function(){
     // ===== DAFTAR LISENSI =====
-    // token lisensi : domain utama (tanpa https://, tanpa path)
     const licenseMap = {
-        "jeda30": "jedabusiness.blogspot.com",
-        "ABC123XYZ": "example.com"
+        "jeda30": ["jedabusiness.blogspot.com", "blog.jedabusiness.com"],
+        "ABC123XYZ": ["example.com", "example.org"]
     };
 
     // ===== AMBIL DOMAIN SEKARANG =====
@@ -14,29 +13,59 @@
                          ? document.currentScript.getAttribute('data-license')
                          : null;
 
+    // ===== FUNGSI UNTUK MENAMPILKAN OVERLAY =====
+    function showOverlay(message) {
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = 0;
+        overlay.style.left = 0;
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.85)';
+        overlay.style.color = '#fff';
+        overlay.style.display = 'flex';
+        overlay.style.flexDirection = 'column';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = 9999;
+        overlay.style.textAlign = 'center';
+        overlay.style.fontFamily = 'sans-serif';
+        overlay.innerHTML = `
+            <h1 style="font-size:2em;margin-bottom:1em;">Lisensi Tidak Valid</h1>
+            <p>${message}</p>
+        `;
+        document.body.appendChild(overlay);
+    }
+
     // ===== VALIDASI LISENSI =====
     if (!licenseKey) {
-        console.error("Jeda.js: Lisensi tidak ditemukan ❌");
-        return; // hentikan eksekusi
+        showOverlay("Lisensi tidak ditemukan. Halaman diblokir.");
+        return;
     }
 
-    if (licenseMap[licenseKey] !== currentDomain) {
-        console.error("Jeda.js: Lisensi tidak valid untuk domain ini ❌");
-        return; // hentikan eksekusi
+    const allowedDomains = licenseMap[licenseKey];
+    if (!allowedDomains || !allowedDomains.includes(currentDomain)) {
+        showOverlay("Lisensi tidak valid untuk domain ini. Halaman diblokir.");
+        return;
     }
-
-    console.log("Jeda.js: Lisensi valid ✅, script berjalan di domain:", currentDomain);
 
     // ===== KODE UTAMA JEDA.JS =====
-    function initJeda() {
-        // Contoh fitur utama
-        document.documentElement.setAttribute('data-jeda-active', 'true');
-        console.log("Jeda.js aktif di domain:", currentDomain);
+    // Tempelkan kode utama kamu di sini
+    const container = document.getElementById('konten-web');
 
-        // Tambahkan semua fitur utama di sini
-        // Misal: notifikasi, manipulasi DOM, dll
-    }
+        // 2. Tentukan Judul dan Paragraf yang Anda inginkan
+        const judul = "JEDA.MY.ID";
+        const paragraf = "Jeda asik lorem ipsum akan tampil di web";
 
-    initJeda();
+        // 3. Buat string HTML yang akan dimasukkan
+        const kontenHTML = `
+            <h1>${judul}</h1>
+            <p>${paragraf}</p>
+        `;
+
+        // 4. Masukkan string HTML ke dalam container
+        container.innerHTML = kontenHTML;
+
+        // Teks "Loading konten..." akan langsung diganti dengan konten di atas saat skrip dijalankan.
 
 })();
